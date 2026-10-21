@@ -50,7 +50,7 @@ services:
       - .env.development
     volumes:
       - ./server/app:/app
-      - ./server/data:/app/data
+      - ./server/app/data:/app/data
     ports:
       - "8787:8787"
     extra_hosts:
