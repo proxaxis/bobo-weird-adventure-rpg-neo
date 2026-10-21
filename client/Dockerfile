@@ -8,8 +8,9 @@ USER node
 
 COPY --chown=node:node ./app/ ./
 
-RUN npm install
+# RUN npm install
 
 EXPOSE 8010
 
-CMD ["npm", "run", "dev"]
+# CMD ["npm", "run", "dev"]
+CMD ["sleep", "infinity"]

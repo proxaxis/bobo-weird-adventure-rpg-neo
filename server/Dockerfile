@@ -26,4 +26,5 @@ USER game
 
 EXPOSE 8787
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8787", "--reload"]
+#CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8787", "--reload"]
+CMD ["sleep", "infinity"]

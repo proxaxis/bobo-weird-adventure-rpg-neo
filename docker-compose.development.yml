@@ -55,6 +55,13 @@ services:
       - "8787:8787"
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
     depends_on:
       - redis
       - router
@@ -66,12 +73,14 @@ services:
       dockerfile: Dockerfile
     image: bobo-weird-adventure-rpg-operationer:latest
     container_name: bobo_weird_adventure_rpg_operationer
-    shm_size: '2gb'
+    shm_size: ${OPERATIONER_SHM_SIZE:-2gb}
     env_file:
       - .env.development
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp/.X11-unix:/tmp/.X11-unix
       - ./:/workspace
+      - ${HOME}/.ssh:/root/.ssh:ro
     command: sleep infinity
 
 volumes:
